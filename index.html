@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adelgace Sanamente® | Medicina Bariátrica Clínica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Avenir:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --carbon: #141414;
+            --ivory: #F5F0E8;
+            --copper: #D97A43;
+            --blue-criterion: #24495A;
+            --green-mineral: #556B5D;
+            --gray-mist: #D8D8D2;
+            --white-clean: #FFFFFF;
+            --font-primary: 'Avenir', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            color: var(--carbon);
+            background-color: var(--ivory);
+            line-height: 1.6;
+            letter-spacing: 0.3px;
+        }
+
+        header {
+            background: var(--white-clean);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--gray-mist);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(20, 20, 20, 0.05);
+        }
+
+        .logo-text {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--carbon);
+            letter-spacing: 0.5px;
+        }
+
+        .language-toggle {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: var(--gray-mist);
+            color: var(--carbon);
+            cursor: pointer;
+            font-family: var(--font-primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--copper);
+            color: var(--white-clean);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--copper) 0%, var(--carbon) 100%);
+            color: var(--white-clean);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-logo {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 2rem;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--white-clean);
+            color: var(--copper);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--white-clean);
+        }
+
+        .cta-primary:hover {
+            background: transparent;
+            color: var(--white-clean);
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--carbon);
+            font-weight: 700;
+        }
+
+        section h3 {
+            font-size: 1.3rem;
+            color: var(--copper);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .section-intro {
+            font-size: 1.1rem;
+            color: var(--copper);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .content-block p {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            color: var(--copper);
+            font-weight: 600;
+        }
+
+        .patient-stories {
+            background: var(--white-clean);
+            border-top: 1px solid var(--gray-mist);
+            border-bottom: 1px solid var(--gray-mist);
+            padding: 3rem 2rem;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .story-card {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(245, 240, 232, 0.7) 0%, rgba(217, 122, 67, 0.05) 100%);
+            border-left: 4px solid var(--copper);
+            border-radius: 2px;
+            text-align: center;
+            font-style: italic;
+            color: var(--carbon);
+            line-height: 1.7;
+        }
+
+        .problems {
+            background: var(--ivory);
+        }
+
+        .problems-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .problem-item {
+            padding: 2rem;
+            background: var(--white-clean);
+            border: 1px solid var(--gray-mist);
+            border-radius: 4px;
+            border-left: 4px solid var(--copper);
+        }
+
+        .problem-item h4 {
+            font-size: 1rem;
+            color: var(--copper);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .problem-item p {
+            font-size: 0.95rem;
+            color: var(--carbon);
+        }
+
+        .methodology {
+            background: var(--white-clean);
+            border-top: 1px solid var(--gray-mist);
+        }
+
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .method-card {
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(245, 240, 232, 0.5) 0%, rgba(217, 122, 67, 0.05) 100%);
+            border: 1px solid var(--gray-mist);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .method-card:hover {
+            border-color: var(--copper);
+            box-shadow: 0 8px 20px rgba(217, 122, 67, 0.1);
+        }
+
+        .method-card h3 {
+            margin-top: 0;
+        }
+
+        .for-you {
+            background: var(--white-clean);
+        }
+
+        .for-you-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .for-card {
+            padding: 2.5rem;
+            border-radius: 4px;
+        }
+
+        .for-yes {
+            background: linear-gradient(135deg, rgba(85, 107, 93, 0.1) 0%, rgba(217, 122, 67, 0.05) 100%);
+            border-left: 4px solid var(--green-mineral);
+        }
+
+        .for-no {
+            background: linear-gradient(135deg, rgba(212, 211, 210, 0.3) 0%, rgba(216, 216, 210, 0.2) 100%);
+            border-left: 4px solid var(--gray-mist);
+        }
+
+        .for-card h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .for-card ul {
+            list-style: none;
+        }
+
+        .for-card li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .for-yes li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--green-mineral);
+            font-weight: bold;
+        }
+
+        .for-no li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: var(--gray-mist);
+        }
+
+        .doctor {
+            background: linear-gradient(135deg, var(--blue-criterion) 0%, var(--carbon) 100%);
+            color: var(--white-clean);
+            text-align: center;
+        }
+
+        .doctor h2 {
+            color: var(--white-clean);
+        }
+
+        .doctor p {
+            font-size: 1rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 1rem;
+        }
+
+        .modalities {
+            background: var(--white-clean);
+            border-top: 1px solid var(--gray-mist);
+        }
+
+        .modalities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .modality-card {
+            padding: 3rem 2rem;
+            background: var(--ivory);
+            border-left: 4px solid var(--copper);
+            border-radius: 2px;
+            text-align: center;
+        }
+
+        .modality-card h3 {
+            margin-top: 0;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--copper) 0%, var(--carbon) 100%);
+            color: var(--white-clean);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: var(--white-clean);
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .whatsapp-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin: 2rem 0;
+            padding: 1.2rem 2.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--white-clean);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-link:hover {
+            background: var(--white-clean);
+        }
+
+        .whatsapp-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .whatsapp-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--white-clean);
+        }
+
+        .whatsapp-link:hover .whatsapp-text {
+            color: var(--copper);
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2.5rem;
+            background: var(--white-clean);
+            color: var(--copper);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--white-clean);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--white-clean);
+        }
+
+        .contact {
+            background: var(--carbon);
+            color: var(--white-clean);
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: var(--white-clean);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .contact-item h3 {
+            color: var(--copper);
+        }
+
+        .contact-item p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+        }
+
+        .contact-item a {
+            color: var(--copper);
+            text-decoration: none;
+        }
+
+        footer {
+            background: #0a0a0a;
+            color: var(--gray-mist);
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            border-top: 1px solid var(--carbon);
+        }
+
+        footer a {
+            color: var(--copper);
+            text-decoration: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .stories-grid,
+            .problems-list,
+            .method-grid,
+            .modalities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .whatsapp-link {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-text">Adelgace Sanamente®</div>
+        <div class="language-toggle">
+            <button class="lang-btn active" data-lang="es" onclick="setLanguage('es')">ES</button>
+            <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <img src="adelgace.svg" alt="Adelgace Sanamente" class="hero-logo">
+            
+            <div id="hero-es" class="lang-content">
+                <h1>Bajar de peso no debería ser una lucha constante</h1>
+                <p class="hero-subtitle">Y si lo ha sido, probablemente no es falta de voluntad</p>
+                <p class="hero-subtitle">Si haces dieta, bajas y vuelves a subir, si sientes que tu cuerpo no responde, o si ya no confías en recomendaciones genéricas, necesitas medicina real.</p>
+                <a href="#contact" class="cta-primary">Solicitar Valoración Médica</a>
+            </div>
+
+            <div id="hero-en" class="lang-content hidden">
+                <h1>Losing weight shouldn't be a constant struggle</h1>
+                <p class="hero-subtitle">And if it has been, it's probably not a lack of willpower</p>
+                <p class="hero-subtitle">If you diet, lose weight and regain it, if you feel your body doesn't respond, or if you no longer trust generic recommendations, you need real medicine.</p>
+                <a href="#contact" class="cta-primary">Request Medical Evaluation</a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div id="reality-es" class="lang-content">
+            <h2>Tú No Estás Fallando</h2>
+            <p class="section-intro">Estás enfrentando un problema médico y metabólico mal abordado.</p>
+            <div class="content-block">
+                <p>En Adelgace Sanamente® tratamos el sobrepeso y la obesidad como lo que son: <span class="highlight">un problema de salud, no un problema de disciplina.</span></p>
+                <p>La mayoría de nuestros pacientes llega diciendo alguna de estas frases:</p>
+            </div>
+        </div>
+
+        <div id="reality-en" class="lang-content hidden">
+            <h2>You're Not Failing</h2>
+            <p class="section-intro">You're facing a medical and metabolic problem that's been poorly addressed.</p>
+            <div class="content-block">
+                <p>At Adelgace Sanamente® we treat overweight and obesity as what they are: <span class="highlight">a health problem, not a discipline problem.</span></p>
+                <p>Most of our patients arrive saying one of these phrases:</p>
+            </div>
+        </div>
+
+        <div class="patient-stories">
+            <div class="stories-grid" id="stories-es">
+                <div class="story-card">"Yo sé comer, pero no bajo"</div>
+                <div class="story-card">"Bajo un poco y luego me estanco"</div>
+                <div class="story-card">"Subo más rápido de lo que bajo"</div>
+                <div class="story-card">"Todo me engorda"</div>
+                <div class="story-card">"Me dicen que es ansiedad o falta de constancia"</div>
+            </div>
+            <div class="stories-grid hidden" id="stories-en">
+                <div class="story-card">"I know how to eat, but I don't lose weight"</div>
+                <div class="story-card">"I lose a little and then I plateau"</div>
+                <div class="story-card">"I gain weight faster than I lose it"</div>
+                <div class="story-card">"Everything makes me gain weight"</div>
+                <div class="story-card">"They tell me it's anxiety or lack of willpower"</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="problems">
+        <div id="problems-es" class="lang-content">
+            <h2>El Problema Real</h2>
+            <p class="section-intro">La mayoría de las recomendaciones no consideran el metabolismo real de la persona.</p>
+            <div class="content-block">
+                <p><span class="highlight">No todos los cuerpos responden igual.</span> No todos los aumentos de peso tienen la misma causa. Y no todo se resuelve con fuerza de voluntad.</p>
+                <p>El exceso de peso rara vez es solo "comer de más". Desde la medicina bariátrica clínica sabemos que el aumento de peso puede estar relacionado con:</p>
+            </div>
+
+            <div class="problems-list">
+                <div class="problem-item">
+                    <h4>Resistencia a la insulina</h4>
+                    <p>Tu cuerpo no procesa correctamente el azúcar, acumulando grasa incluso con control calórico.</p>
+                </div>
+                <div class="problem-item">
+                    <h4>Alteraciones hormonales</h4>
+                    <p>Desequilibrios en el metabolismo hormonal que favorecen el almacenamiento de grasa.</p>
+                </div>
+                <div class="problem-item">
+                    <h4>Pérdida de masa muscular</h4>
+                    <p>Dietas repetidas sin apoyo médico degradan el músculo, bajando el metabolismo basal.</p>
+                </div>
+                <div class="problem-item">
+                    <h4>Aumento de grasa visceral</h4>
+                    <p>Grasa alrededor de órganos que causa inflamación y mayor resistencia metabólica.</p>
+                </div>
+                <div class="problem-item">
+                    <h4>Estrés crónico y mal descanso</h4>
+                    <p>El cortisol elevado y el sueño deficiente sabotean la pérdida de peso.</p>
+                </div>
+                <div class="problem-item">
+                    <h4>Intentos repetidos de dietas restrictivas</h4>
+                    <p>Tu cuerpo se defiende bajando menos y recuperando peso más rápido.</p>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <p style="margin-top: 2rem;"><span class="highlight">Cuando estos factores no se identifican ni se tratan, el cuerpo se defiende bajando menos y recuperando peso más rápido.</span></p>
+                <p>Por eso aquí no damos dietas estándar ni fórmulas mágicas. Aquí evaluamos, entendemos y tratamos.</p>
+            </div>
+        </div>
+
+        <div id="problems-en" class="lang-content hidden">
+            <h2>The Real Problem</h2>
+            <p class="section-intro">Most recommendations don't consider the person's actual metabolism.</p>
+            <div class="content-block">
+                <p><span class="highlight">Not all bodies respond the same way.</span> Not all weight gain has the same cause. And not everything is solved with willpower.</p>
+                <p>Excess weight is rarely just "eating too much". From clinical bariatric medicine we know that weight gain can be related to:</p>
+            </div>
+
+            <div class="problems-list">
+                <div class="problem-item">
+                    <h4>Insulin Resistance</h4>
+                    <p>Your body doesn't process sugar correctly, accumulating fat even with caloric control.</p>
+                </div>
+                <div class="problem-item">
+                    <h4>Hormonal Imbalances</h4>
+                    <p>Hormonal metabolism imbalances that favor fat storage.</p>
+                </div>
+                <div class="problem-item">
+                    <h4>Loss of Muscle Mass</h4>
+                    <p>Repeated diets without medical support degrade muscle, lowering basal metabolism.</p>
+                </div>
+                <div class="problem-item">
+                    <h4>Increase in Visceral Fat</h4>
+                    <p>Fat around organs that causes inflammation and greater metabolic resistance.</p>
+                </div>
+                <div class="problem-item">
+                    <h4>Chronic Stress and Poor Sleep</h4>
+                    <p>Elevated cortisol and poor sleep sabotage weight loss.</p>
+                </div>
+                <div class="problem-item">
+                    <h4>Repeated Restrictive Diets</h4>
+                    <p>Your body defends itself by losing less and regaining weight faster.</p>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <p style="margin-top: 2rem;"><span class="highlight">When these factors are not identified and treated, the body defends itself by losing less and regaining weight faster.</span></p>
+                <p>That's why we don't give standard diets or magic formulas here. Here we evaluate, understand, and treat.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="methodology">
+        <div id="methodology-es" class="lang-content">
+            <h2>¿Qué es Adelgace Sanamente®?</h2>
+            <p class="section-intro">Un programa médico integral y personalizado diseñado para personas que quieren transformación real.</p>
+
+            <div class="method-grid">
+                <div class="method-card">
+                    <h3>Evaluación Médica Completa</h3>
+                    <p>No es un cuestionario genérico. Es un análisis profundo de tu historia clínica, metabolismo y circunstancias reales.</p>
+                </div>
+                <div class="method-card">
+                    <h3>Análisis de Composición Corporal</h3>
+                    <p>Entendemos qué está cambiando: grasa, músculo, grasa visceral. No solo números en la balanza.</p>
+                </div>
+                <div class="method-card">
+                    <h3>Plan Nutricional Personalizado</h3>
+                    <p>Adaptado a tu metabolismo real, no a tendencias de moda. Comidas que nutren y que disfrutas.</p>
+                </div>
+                <div class="method-card">
+                    <h3>Recomendaciones de Actividad Física</h3>
+                    <p>Realistas y sostenibles. Ejercicio que se ajusta a tu vida, no al revés.</p>
+                </div>
+                <div class="method-card">
+                    <h3>Seguimiento Médico Consistente</h3>
+                    <p>Evaluaciones periódicas, ajustes al plan y acompañamiento constante. El cambio requiere tiempo y criterio.</p>
+                </div>
+                <div class="method-card">
+                    <h3>Trabajo con el Cuerpo, No Contra Él</h3>
+                    <p>Entendemos que la transformación sostenible requiere paciencia, educación y medicina real.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="methodology-en" class="lang-content hidden">
+            <h2>What is Adelgace Sanamente®?</h2>
+            <p class="section-intro">A comprehensive and personalized medical program designed for people who want real transformation.</p>
+
+            <div class="method-grid">
+                <div class="method-card">
+                    <h3>Complete Medical Evaluation</h3>
+                    <p>It's not a generic questionnaire. It's a deep analysis of your medical history, metabolism, and real circumstances.</p>
+                </div>
+                <div class="method-card">
+                    <h3>Body Composition Analysis</h3>
+                    <p>We understand what's changing: fat, muscle, visceral fat. Not just numbers on the scale.</p>
+                </div>
+                <div class="method-card">
+                    <h3>Personalized Nutritional Plan</h3>
+                    <p>Adapted to your actual metabolism, not fashion trends. Meals that nourish and that you enjoy.</p>
+                </div>
+                <div class="method-card">
+                    <h3>Realistic Physical Activity Recommendations</h3>
+                    <p>Realistic and sustainable. Exercise that fits your life, not the other way around.</p>
+                </div>
+                <div class="method-card">
+                    <h3>Consistent Medical Follow-up</h3>
+                    <p>Regular evaluations, plan adjustments, and constant support. Change requires time and criterion.</p>
+                </div>
+                <div class="method-card">
+                    <h3>Work With Your Body, Not Against It</h3>
+                    <p>We understand that sustained transformation requires patience, education, and real medicine.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="for-you">
+        <div id="foryou-es" class="lang-content">
+            <h2>Esto Importante Que Sepas Antes de Pedir Cita</h2>
+            <p class="section-intro">Este programa NO es para ti si... PERO SÍ es para ti si...</p>
+
+            <div class="for-you-grid">
+                <div class="for-card for-no">
+                    <h3>Este programa NO es para ti si:</h3>
+                    <ul>
+                        <li>Buscas bajar de peso rápido sin entender qué le pasa a tu cuerpo</li>
+                        <li>Quieres una dieta milagro o una solución sin seguimiento</li>
+                        <li>No estás dispuesto a asumir un proceso médico</li>
+                        <li>Esperas resultados sin cambios reales</li>
+                    </ul>
+                    <p style="margin-top: 1.5rem; font-size: 0.9rem;">Este filtro es intencional. Preferimos acompañar a quienes realmente están listos.</p>
+                </div>
+
+                <div class="for-card for-yes">
+                    <h3>Sí es para ti si:</h3>
+                    <ul>
+                        <li>Quieres entender por qué no has podido bajar de peso</li>
+                        <li>Estás dispuesto a recibir orientación médica clara</li>
+                        <li>Buscas resultados sostenibles, no temporales</li>
+                        <li>Quieres recuperar el control de tu salud</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="foryou-en" class="lang-content hidden">
+            <h2>Important Things to Know Before Requesting an Appointment</h2>
+            <p class="section-intro">This program is NOT for you if... BUT it IS for you if...</p>
+
+            <div class="for-you-grid">
+                <div class="for-card for-no">
+                    <h3>This program is NOT for you if:</h3>
+                    <ul>
+                        <li>You're looking to lose weight quickly without understanding what's happening with your body</li>
+                        <li>You want a miracle diet or a solution without follow-up</li>
+                        <li>You're not willing to commit to a medical process</li>
+                        <li>You expect results without real changes</li>
+                    </ul>
+                    <p style="margin-top: 1.5rem; font-size: 0.9rem;">This filter is intentional. We prefer to support those who are truly ready.</p>
+                </div>
+
+                <div class="for-card for-yes">
+                    <h3>It IS for you if:</h3>
+                    <ul>
+                        <li>You want to understand why you haven't been able to lose weight</li>
+                        <li>You're willing to receive clear medical guidance</li>
+                        <li>You're seeking sustainable results, not temporary ones</li>
+                        <li>You want to regain control of your health</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="doctor">
+        <div id="doctor-es" class="lang-content">
+            <h2>¿Quién Te Acompaña?</h2>
+            <p>Soy Alejandro Ortiz Obregón, médico con formación en medicina bariátrica clínica, nutrición y metabolismo.</p>
+            <p>Desde hace más de dos décadas acompaño a personas que han sufrido por seguir recomendaciones equivocadas, incompletas o irresponsables.</p>
+            <p>Este programa nace de la práctica clínica diaria, de escuchar pacientes frustrados y de entender que <span class="highlight">explicar mejor el problema cambia completamente el resultado.</span></p>
+            <p>Aquí no prometemos lo imposible. Aquí hacemos medicina.</p>
+        </div>
+
+        <div id="doctor-en" class="lang-content hidden">
+            <h2>Who Accompanies You?</h2>
+            <p>I'm Alejandro Ortiz Obregón, a physician with training in clinical bariatric medicine, nutrition, and metabolism.</p>
+            <p>For more than two decades I've accompanied people who have suffered from following wrong, incomplete, or irresponsible recommendations.</p>
+            <p>This program is born from daily clinical practice, from listening to frustrated patients, and from understanding that <span class="highlight">explaining the problem better completely changes the outcome.</span></p>
+            <p>Here we don't promise the impossible. Here we practice medicine.</p>
+        </div>
+    </section>
+
+    <section class="modalities">
+        <div id="modalities-es" class="lang-content">
+            <h2>Modalidades de Atención</h2>
+            <p class="section-intro">Flexibilidad en cómo accedes al programa.</p>
+            
+            <div class="modalities-grid">
+                <div class="modality-card">
+                    <h3>🏥 Consulta Presencial</h3>
+                    <p>Consulta privada en Centro Médico Almirante Colón, Bogotá. Evaluación completa y plan personalizado.</p>
+                </div>
+                <div class="modality-card">
+                    <h3>💻 Consulta Virtual</h3>
+                    <p>Desde dónde usted esté. Atención mediante plataforma de Telemedicina segura, encriptada con los más altos estándares. Fácil de usar desde su teléfono, tablet o computador.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="modalities-en" class="lang-content hidden">
+            <h2>Care Modalities</h2>
+            <p class="section-intro">Flexibility in how you access the program.</p>
+            
+            <div class="modalities-grid">
+                <div class="modality-card">
+                    <h3>🏥 In-Person Consultation</h3>
+                    <p>Private consultation at Centro Médico Almirante Colón, Bogotá. Complete evaluation and personalized plan.</p>
+                </div>
+                <div class="modality-card">
+                    <h3>💻 Virtual Consultation</h3>
+                    <p>From wherever you are. Secure, encrypted telemedicine platform with the highest standards. Easy to use from your phone, tablet, or computer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div id="cta-es" class="lang-content">
+            <h2>El Primer Paso No Es Una Dieta</h2>
+            <div class="cta-content">
+                <p><span class="highlight">Es una evaluación médica.</span></p>
+                <p style="margin: 2rem 0;">Si se reconoce en lo que ha leído, probablemente es momento de dejar de intentar solo y empezar un proceso con acompañamiento profesional.</p>
+                <p style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.8);">No necesita estar "muy mal" para consultar. Tampoco necesita saberlo todo. Solo necesita estar dispuesto a entender qué le pasa a su cuerpo.</p>
+                
+                <a href="https://wa.me/573152992021?text=Quiero una valoración médica" class="whatsapp-link" target="_blank">
+                    <span class="whatsapp-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.6915026,12.4744748 C17.5625,11.6599598 16.5570397,11.0151496 15.3399899,10.8006248 C14.8124706,10.7115147 14.1624706,10.5396211 12.5599899,11.3966879 C11.2799899,12.0926075 10.197489,13.4359212 9.8474891,14.1274348 C9.4749706,14.8526218 9.13495854,16.0151391 10.4146707,16.978484 C11.6943827,17.9418288 12.8568827,17.4293239 13.3718827,17.1366348 C13.8868827,16.8439458 15.4968827,15.9366416 15.8493827,15.6939522 C16.2018827,15.4512628 16.4343827,15.3399899 16.6668827,15.5849525 C16.8993827,15.8299151 17.5625,16.5460253 17.7200255,16.7881618 C17.8775511,17.0302982 18.0275511,16.9275574 18.2596067,16.8235848 C18.4916624,16.7196121 19.4416624,16.2071072 19.7941624,16.0151391 C20.1466624,15.8231711 20.3791624,15.7271871 20.5366879,15.5349088 C20.6942135,15.3426305 20.6942135,14.9496507 20.5652011,14.1374009 M12,0 C5.373,0 0,5.373 0,12 C0,18.627 5.373,24 12,24 C18.627,24 24,18.627 24,12 C24,5.373 18.627,0 12,0 Z" fill="#25D366"/>
+                        </svg>
+                    </span>
+                    <span class="whatsapp-text">+57 315 299 2021</span>
+                </a>
+
+                <a href="https://agenda.saludtools.com/oqMskB" class="cta-button" target="_blank">Autoagendamiento</a>
+            </div>
+        </div>
+
+        <div id="cta-en" class="lang-content hidden">
+            <h2>The First Step is Not a Diet</h2>
+            <div class="cta-content">
+                <p><span class="highlight">It's a medical evaluation.</span></p>
+                <p style="margin: 2rem 0;">If you recognize yourself in what you've read, it's probably time to stop trying alone and start a process with professional support.</p>
+                <p style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.8);">You don't need to be "very bad off" to consult. You don't need to know everything. You just need to be willing to understand what's happening with your body.</p>
+                
+                <a href="https://wa.me/573152992021?text=I want a medical evaluation" class="whatsapp-link" target="_blank">
+                    <span class="whatsapp-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.6915026,12.4744748 C17.5625,11.6599598 16.5570397,11.0151496 15.3399899,10.8006248 C14.8124706,10.7115147 14.1624706,10.5396211 12.5599899,11.3966879 C11.2799899,12.0926075 10.197489,13.4359212 9.8474891,14.1274348 C9.4749706,14.8526218 9.13495854,16.0151391 10.4146707,16.978484 C11.6943827,17.9418288 12.8568827,17.4293239 13.3718827,17.1366348 C13.8868827,16.8439458 15.4968827,15.9366416 15.8493827,15.6939522 C16.2018827,15.4512628 16.4343827,15.3399899 16.6668827,15.5849525 C16.8993827,15.8299151 17.5625,16.5460253 17.7200255,16.7881618 C17.8775511,17.0302982 18.0275511,16.9275574 18.2596067,16.8235848 C18.4916624,16.7196121 19.4416624,16.2071072 19.7941624,16.0151391 C20.1466624,15.8231711 20.3791624,15.7271871 20.5366879,15.5349088 C20.6942135,15.3426305 20.6942135,14.9496507 20.5652011,14.1374009 M12,0 C5.373,0 0,5.373 0,12 C0,18.627 5.373,24 12,24 C18.627,24 24,18.627 24,12 C24,5.373 18.627,0 12,0 Z" fill="#25D366"/>
+                        </svg>
+                    </span>
+                    <span class="whatsapp-text">+57 315 299 2021</span>
+                </a>
+
+                <a href="https://agenda.saludtools.com/oqMskB" class="cta-button" target="_blank">Book Appointment</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div id="contact-es" class="lang-content">
+            <h2>Contacto</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <p><a href="mailto:info@adelgacesanamente.com">info@adelgacesanamente.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <h3>WhatsApp</h3>
+                    <p><a href="https://wa.me/573152992021" target="_blank">+57 315 299 2021</a></p>
+                </div>
+                <div class="contact-item">
+                    <h3>Dirección (Bogotá)</h3>
+                    <p>Centro Médico Almirante Colón</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="contact-en" class="lang-content hidden">
+            <h2>Contact</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <p><a href="mailto:info@adelgacesanamente.com">info@adelgacesanamente.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <h3>WhatsApp</h3>
+                    <p><a href="https://wa.me/573152992021" target="_blank">+57 315 299 2021</a></p>
+                </div>
+                <div class="contact-item">
+                    <h3>Address (Bogotá)</h3>
+                    <p>Centro Médico Almirante Colón</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div id="footer-es" class="lang-content">
+            <p>&copy; 2026 Adelgace Sanamente®. Todos los derechos reservados. | Programa clínico del Dr. Alejandro Ortiz Obregón, M.D.</p>
+        </div>
+
+        <div id="footer-en" class="lang-content hidden">
+            <p>&copy; 2026 Adelgace Sanamente®. All rights reserved. | Clinical program by Dr. Alejandro Ortiz Obregón, M.D.</p>
+        </div>
+    </footer>
+
+    <script>
+        function getPreferredLanguage() {
+            const saved = localStorage.getItem('preferred-language');
+            if (saved) return saved;
+            const browserLang = navigator.language || navigator.userLanguage;
+            if (browserLang.startsWith('en')) return 'en';
+            return 'es';
+        }
+
+        function setLanguage(lang) {
+            localStorage.setItem('preferred-language', lang);
+            document.querySelectorAll('.lang-content').forEach(el => {
+                el.classList.add('hidden');
+            });
+            document.querySelectorAll(`[id$="-${lang}"]`).forEach(el => {
+                el.classList.remove('hidden');
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            document.documentElement.lang = lang;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const preferredLang = getPreferredLanguage();
+            setLanguage(preferredLang);
+        });
+    </script>
+</body>
+</html>
